@@ -40,6 +40,19 @@ enum class TokenType {
         fun isUnknown(token: TokenType): Boolean {
             return token == UNKNOWN
         }
+
+        // get the precedence of the given operator token
+        fun getPrecedence(token: TokenType): Int {
+            return when (token) {
+                NOT -> 2
+                AND -> 1
+                OR -> 1
+                XOR -> 1
+                IMPL -> 0
+                IFF -> 0
+                else -> -1
+            }
+        }
     }
 }
 

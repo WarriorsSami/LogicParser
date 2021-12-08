@@ -62,11 +62,18 @@ fun evaluateExpression(tokens: List<Pair<TokenType, String>>, listOfConfiguratio
                     evaluateConfig(listOfConfiguration, operatorsStack)
                 }
 
+                // pop the left parenthesis
                 if (!operatorsStack.empty()) {
                     operatorsStack.pop()
                 }
             }
             else -> {
+                while (!operatorsStack.empty() &&
+                    TokenType.getPrecedence(operatorsStack.peek()) >=
+                    TokenType.getPrecedence(it.first)) {
+                    evaluateConfig(listOfConfiguration, operatorsStack)
+                }
+
                 operatorsStack.push(it.first)
             }
         }
