@@ -45,7 +45,10 @@ fun main() {
 
     // find the nature of the expression
     println("The statement $line is ${getStatementType(results)}\n")
-    listOfConfiguration.forEach {
-        println("${it.booleanConfiguration} - ${it.result}")
+    listOfConfiguration.forEach { configuration ->
+        configuration.operandsMap.forEach {
+            print("${it.key}: ${configuration.booleanConfiguration[it.value]}".padEnd(11))
+        }
+        print("=> ${configuration.result}\n")
     }
 }
