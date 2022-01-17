@@ -4,6 +4,7 @@ import util.*
 const val filename = "assets/statement.in"
 
 fun main() {
+    // convert text format to token stream
     val line = readString(filename)
     val tokens = tokenize(line)
 
